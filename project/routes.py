@@ -8,6 +8,7 @@ from sqlalchemy import func, text
 
 api = Blueprint('api', __name__)
 
+
 def abort_if_username_is_not_valid(username):
     if not username.isalpha():
         abort(HTTPStatus.BAD_REQUEST, message="Invalid username '{}'. <username> must contain only letters".format(username))
