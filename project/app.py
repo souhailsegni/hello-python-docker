@@ -3,13 +3,14 @@ from flask import Flask
 from config import DevelopmentConfig
 from models import db
 from routes import create_api_blueprint
+from flask_migrate import Migrate
 
 def create_app():
     app = Flask(__name__)
 
     app.config.from_object(DevelopmentConfig)
     db.init_app(app)
-
+    migrate = Migrate(app, db)  # Initialize Flask-Migrate
     api = create_api_blueprint()
     app.register_blueprint(api)
     app.debug=True

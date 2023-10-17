@@ -8,7 +8,7 @@ WORKDIR /app
 
 COPY . /app
 
-RUN pip install -r requirements.txt --timeout 120--index-url https://pypi.org/simple/
+RUN pip install -r requirements.txt --timeout=120 --index-url https://pypi.org/simple/
 
 EXPOSE 5000
 
