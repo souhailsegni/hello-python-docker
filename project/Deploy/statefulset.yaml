@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: app-statefulset
+spec:
+  serviceName: "app-service"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: web
+        image: souhail1920/flask_docker:2.0
+        ports:
+        - containerPort: 5000
+        env:
+        - name: POSTGRES_HOST
+          value: "postgres-service" 
